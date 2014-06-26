@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title></title>
+    <script src="/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="myContr">
+            <input type="text" ng-model="name">Text shown here : {{ name }}
+            <br />
+            <span>
+                <button ng-click="saveList( )">save names</button>
+                <button ng-click="showList( )">show names</button>
+
+                <div ng-repeat="index in nameList">
+                    {{index}}
+
+                </div>
+        </div>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myContr', function($scope) {
+        $scope.name = 'name1';
+        $scope.nameList = [];
+        $scope.saveList = function() {
+            $scope.nameList.push($scope.name);
+            $scope.name = '';
+        };
+        $scope.showList = function() {
+            console.log($scope.nameList);
+        }
+    });
+    </script>
+</body>
+
+</html>
